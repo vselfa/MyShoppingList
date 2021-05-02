@@ -8,19 +8,23 @@ import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class CustomArrayAdapter extends ArrayAdapter<Producte>
-{
+public class CustomArrayAdapter extends ArrayAdapter<Producte> implements View.OnClickListener {
     private LayoutInflater layoutInflater;
+
+     ArrayList<Integer> llistaProductes;
 
     public CustomArrayAdapter(Context context, List<Producte> objects)
     {
         super(context, 0, objects);
         layoutInflater = LayoutInflater.from(context);
+
     }
 
     @Override
@@ -32,6 +36,7 @@ public class CustomArrayAdapter extends ArrayAdapter<Producte>
         if (convertView == null)   {
             holder = new Holder();
             convertView = layoutInflater.inflate(R.layout.listview_row, null);
+            holder.setCheckBox((CheckBox) convertView.findViewById(R.id.checkBox));
             holder.setTextViewTitle( convertView.findViewById(R.id.producte_nom));
             holder.setTextViewSubtitle(convertView.findViewById(R.id.producte_descripcio));
             holder.setImageView(convertView.findViewById(R.id.producte_avatar));
@@ -40,9 +45,8 @@ public class CustomArrayAdapter extends ArrayAdapter<Producte>
         else {
             holder = (Holder) convertView.getTag();
         }
-
+        // To show the picture of the product: Glide
         avatar = (ImageView) convertView.findViewById(R.id.producte_avatar);
-
         Producte producte = getItem(position);
         Glide.with(getContext()).load(producte.getFoto()).into(avatar);
 
@@ -50,11 +54,33 @@ public class CustomArrayAdapter extends ArrayAdapter<Producte>
         holder.getTextViewSubtitle().setText(producte.getDescripcioProducte());
         holder.getImageView();
 
+        // To manage the CheckBoxes
+        holder.getCheckBox().setTag(position);
+        holder.getCheckBox().setChecked(producte.isChecked());
+        holder.getCheckBox().setOnClickListener(this);
+
         return convertView;
     }
 
-    static class Holder
-    {
+    @Override
+    public void onClick(View v) {
+        String message;
+        CheckBox checkBox = (CheckBox) v;
+        int position = (Integer) v.getTag();
+        getItem(position).setChecked(checkBox.isChecked());
+
+        if (ListViewActivity.llistaProductes.get(position).getSelected()) {
+            message = ListViewActivity.llistaProductes.get(position).getNomProducte() + " unselected";
+            ListViewActivity.llistaProductes.get(position).setSelected(false);
+        }
+        else {
+            message = ListViewActivity.llistaProductes.get(position).getNomProducte() + " selected";
+            ListViewActivity.llistaProductes.get(position).setSelected(true);
+        }
+        Toast.makeText(this.getContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    static class Holder    {
         TextView textViewTitle;
         TextView textViewSubtitle;
         CheckBox checkBox;
@@ -84,8 +110,5 @@ public class CustomArrayAdapter extends ArrayAdapter<Producte>
         public void setImageView ( ImageView foto)     {
             this.foto = foto;
         }
-
-
-
     }
 }

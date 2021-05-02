@@ -6,6 +6,7 @@ public class Producte {
     private String descripcioProducte;
     private int quantitat = 1;
     private int foto;
+    private Boolean selected;
 
     private boolean checked;
 
@@ -13,6 +14,7 @@ public class Producte {
         this.nomProducte  = nom;
         this.descripcioProducte = descripcio;
         this.foto = foto;
+        this.selected = false;
     }
 
     public String getNomProducte() {
@@ -54,4 +56,13 @@ public class Producte {
     public void setFoto(int foto) {
         this.foto = foto;
     }
+
+    public Boolean getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Boolean selected) {
+        this.selected = selected;
+    }
+
 }

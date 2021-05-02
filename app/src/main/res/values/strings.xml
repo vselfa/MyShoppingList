@@ -12,5 +12,7 @@
     <string name="minus">-</string>
     <string name="list_view">Llista productes</string>
 
+    <string name="check_toast">Producte seleccionat </string>
+
 
 </resources>
