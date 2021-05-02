@@ -5,7 +5,7 @@
 
     <!-- Menu options -->
     <string name="home">Home</string>
-    <string name="title">My CheckBox Adapter</string>
+    <string name="title">My shopping list</string>
     <string name="menjar_nom">Nom producte</string>
     <string name="menjar_descripcio">Descripció producte</string>
     <string name="plus">+</string>
