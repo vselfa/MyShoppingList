@@ -4,7 +4,7 @@ public class Producte {
 
     private String nomProducte;
     private String descripcioProducte;
-    private int quantitat = 1;
+    private int quantitat;
     private int foto;
     private Boolean selected;
 
@@ -15,6 +15,7 @@ public class Producte {
         this.descripcioProducte = descripcio;
         this.foto = foto;
         this.selected = false;
+        this.quantitat = 0;
     }
 
     public String getNomProducte() {

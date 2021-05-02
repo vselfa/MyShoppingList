@@ -30,9 +30,9 @@ public class ListViewActivity extends MainMenu {
 
         producte = new Producte("Paella marisc", "La típica paella valenciana de marisc",  R.drawable.plat_paella_marisc);
         llistaProductes.add(producte);
-        producte =  new Producte("Fideuà", "Fideuà peix amb fieus fins", R.drawable.plat_fideua);
+        producte =  new Producte("Fideuà", "Fideuà peix amb fideus fins", R.drawable.plat_fideua);
         llistaProductes.add(producte);
-        producte = new Producte("Tortilla de creïlles", "Amb creïlles i sense ceba",  R.drawable.plat_tortilla_creilles);
+        producte = new Producte("Truita de creïlles", "Amb creïlles i sense ceba",  R.drawable.plat_tortilla_creilles);
         llistaProductes.add(producte);
 
         listViewProductes.setAdapter(new CustomArrayAdapter(this, llistaProductes));

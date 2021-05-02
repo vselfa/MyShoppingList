@@ -65,7 +65,10 @@
         android:layout_height="40dp"
         android:layout_below="@+id/producte_descripcio"
         android:layout_marginLeft="200dp"
-        android:text="0" />
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:text="0"
+        android:textSize="24sp" />
 
 
 </RelativeLayout>
