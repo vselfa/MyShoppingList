@@ -28,15 +28,6 @@ public class ListViewActivity extends MainMenu {
         llistaProductes = new ArrayList<Producte>(30);
         Producte producte = null;
 
-        /*
-        for (int i = 0; i < 3; i++) {
-            producte = new Producte();
-            producte.setNomProducte("Nom " + i);
-            producte.setDescripcioProducte("Descripció " + i);
-            producte.setDescripcioProducte("Descripció " + i);
-            productes.add(producte);
-        }*/
-
         producte = new Producte("Paella marisc", "La típica paella valenciana de marisc",  R.drawable.plat_paella_marisc);
         llistaProductes.add(producte);
         producte =  new Producte("Fideuà", "Fideuà peix amb fieus fins", R.drawable.plat_fideua);
@@ -44,17 +35,7 @@ public class ListViewActivity extends MainMenu {
         producte = new Producte("Tortilla de creïlles", "Amb creïlles i sense ceba",  R.drawable.plat_tortilla_creilles);
         llistaProductes.add(producte);
 
-
         listViewProductes.setAdapter(new CustomArrayAdapter(this, llistaProductes));
 
-        /*listViewProductes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                Toast.makeText(ListViewActivity.this,
-                        productes.get(position).getNomProducte(),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });*/
     }
 }
