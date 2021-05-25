@@ -17,10 +17,12 @@ import java.util.List;
 
 public class CustomArrayAdapter extends ArrayAdapter<Producte>  {
     private LayoutInflater layoutInflater;
+    List<Producte> llistaProductes;
 
-    public CustomArrayAdapter(Context context, List<Producte> objects) {
-        super(context, 0, objects);
+    public CustomArrayAdapter(Context context, List<Producte> productes) {
+        super(context, 0, productes);
         layoutInflater = LayoutInflater.from(context);
+        llistaProductes = productes;
     }
 
     @Override
@@ -74,16 +76,16 @@ public class CustomArrayAdapter extends ArrayAdapter<Producte>  {
                 getItem(position).setChecked(checkBox.isChecked());
 
                 // Control sobre els checkboxes
-                if (ListViewActivity.llistaProductes.get(position).getSelected()) {
-                    message = ListViewActivity.llistaProductes.get(position).getNomProducte() + " unselected";
-                    ListViewActivity.llistaProductes.get(position).setSelected(false);
+                if (llistaProductes.get(position).getSelected()) {
+                    message = llistaProductes.get(position).getNomProducte() + " unselected";
+                    llistaProductes.get(position).setSelected(false);
                     // Posem quantitat a 0 si deseleccionem un producte
-                    ListViewActivity.llistaProductes.get(position).setQuantitat(0);
+                    llistaProductes.get(position).setQuantitat(0);
                     tvQuantitat.setText("0");
                 }
                 else {
-                    message = ListViewActivity.llistaProductes.get(position).getNomProducte() + " selected";
-                    ListViewActivity.llistaProductes.get(position).setSelected(true);
+                    message = llistaProductes.get(position).getNomProducte() + " selected";
+                    llistaProductes.get(position).setSelected(true);
                 }
                 Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
             }
@@ -96,11 +98,11 @@ public class CustomArrayAdapter extends ArrayAdapter<Producte>  {
                 // Sols si està activat el checkbox
                 if (cbProduct.isChecked()) {
                     // Recuperem la quantitat actual
-                    int quantitat = ListViewActivity.llistaProductes.get(position).getQuantitat();
+                    int quantitat = llistaProductes.get(position).getQuantitat();
                     // La incrementem
                     quantitat++;
                     // Actualitzem la llista
-                    ListViewActivity.llistaProductes.get(position).setQuantitat(quantitat);
+                    llistaProductes.get(position).setQuantitat(quantitat);
                     // Però como li la posem a text??
                     tvQuantitat.setText(String.valueOf(quantitat));
                 }
@@ -114,11 +116,11 @@ public class CustomArrayAdapter extends ArrayAdapter<Producte>  {
                 // Sols si està activat el checkbox
                 if (cbProduct.isChecked()) {
                     // Recuperem la quantitat actual
-                    int quantitat = ListViewActivity.llistaProductes.get(position).getQuantitat();
+                    int quantitat = llistaProductes.get(position).getQuantitat();
                     // La decrementem
                     if (quantitat > 0) quantitat--;
                     // Actualitzem la llista
-                    ListViewActivity.llistaProductes.get(position).setQuantitat(quantitat);
+                    llistaProductes.get(position).setQuantitat(quantitat);
                     // Però como li la posem a text??
                     tvQuantitat.setText(String.valueOf(quantitat));
                 }

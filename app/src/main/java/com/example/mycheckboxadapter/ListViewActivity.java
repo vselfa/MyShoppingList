@@ -13,8 +13,8 @@ import java.util.List;
 
 public class ListViewActivity extends MainMenu {
 
-    // Llista productes. Static per accedir des de l'adapter
-    static List<Producte> llistaProductes;
+    // Llista productes. La passem com paràmetre del setAdapter
+    List<Producte> llistaProductes;
     // La ListViww que mostra els productes
     private ListView listViewProductes;
     Integer numProductes = 3;
